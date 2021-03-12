@@ -11,6 +11,22 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+
+    public function comment()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
+
     /**
      * The attributes that are mass assignable.
      *
