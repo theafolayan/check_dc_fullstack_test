@@ -16500,26 +16500,19 @@ __webpack_require__.r(__webpack_exports__);
     BreezeValidationErrors: _Components_ValidationErrors__WEBPACK_IMPORTED_MODULE_4__.default
   },
   props: {
-    email: String,
-    token: String
+    title: String
   },
   data: function data() {
     return {
       form: this.$inertia.form({
-        token: this.token // title: this.ti,
-
+        title: null
       })
     };
   },
   methods: {
     submit: function submit() {
-      var _this = this;
-
-      this.form.post(this.route('password.update'), {
-        onFinish: function onFinish() {
-          return _this.form.reset('password', 'password_confirmation');
-        }
-      });
+      this.form.post(this.route('post.store'));
+      this.form.title = '';
     }
   }
 });
@@ -17106,6 +17099,14 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     BreezeAuthenticatedLayout: _Layouts_Authenticated__WEBPACK_IMPORTED_MODULE_0__.default,
     CreatePostForm: _Components_CreatePostForm_vue__WEBPACK_IMPORTED_MODULE_1__.default
+  },
+  props: {
+    posts: Array
+  },
+  methods: {
+    sey: function sey() {
+      console.log(this.posts);
+    }
   }
 });
 
@@ -18479,17 +18480,34 @@ var _hoisted_2 = {
   "class": "py-12"
 };
 var _hoisted_3 = {
-  "class": "max-w-7xl mx-auto sm:px-6 lg:px-8"
+  "class": "max-w-6xl mx-auto sm:px-6 lg:px-8"
 };
 var _hoisted_4 = {
   "class": "bg-white overflow-hidden shadow-sm sm:rounded-lg"
 };
 var _hoisted_5 = {
-  "class": "p-6 bg-white border-b border-gray-200"
+  "class": "p-6 bg-white border-b border-gray-200 mx-24"
 };
 
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" What's on your mind today? ");
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" What's on your mind today sir? ");
 
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "mx-auto max-w-xs w-full "
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h3", {
+  "class": "text-black font-bold text-lg"
+}, " Your recent Posts")], -1
+/* HOISTED */
+);
+
+var _hoisted_8 = {
+  "class": "my-3 mx-auto overflow-hidden bg-white rounded max-w-xl w-full shadow-lg leading-normal"
+};
+var _hoisted_9 = {
+  "class": "block group hover:bg-blue p-3 border-b"
+};
+var _hoisted_10 = {
+  "class": "mb-1 text-black group-hover:text-gray-500"
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_create_post_form = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("create-post-form");
 
@@ -18500,7 +18518,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return [_hoisted_1];
     }),
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_create_post_form)])])])])];
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_create_post_form), _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_8, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.posts, function (post) {
+        return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("ul", {
+          key: post.id
+        }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("li", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(post.title), 1
+        /* TEXT */
+        )])]);
+      }), 128
+      /* KEYED_FRAGMENT */
+      ))])])])])])];
     }),
     _: 1
     /* STABLE */

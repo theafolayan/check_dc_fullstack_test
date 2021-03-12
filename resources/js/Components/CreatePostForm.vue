@@ -5,7 +5,7 @@
         <div>
             <breeze-label for="title" value="Title" />
             <breeze-input id="title" type="text" class="mt-1 block w-full" v-model="form.title" required autofocus autocomplete="title" />
-            
+
         </div>
 
 
@@ -36,24 +36,21 @@
         },
 
         props: {
-            email: String,
-            token: String,
+            title: String,
         },
 
         data() {
             return {
                 form: this.$inertia.form({
-                    token: this.token,
-                    // title: this.ti,
+                    title: null,
                 })
             }
         },
 
         methods: {
             submit() {
-                this.form.post(this.route('password.update'), {
-                    onFinish: () => this.form.reset('password', 'password_confirmation'),
-                })
+                this.form.post(this.route('post.store'))
+                this.form.title = '';
             }
         }
     }

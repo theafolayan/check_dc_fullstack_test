@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -25,7 +27,24 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
+
+    $posts = Auth::user()->posts()->orderBy('created_at', 'desc')->paginate(10);
+    return Inertia::render('Dashboard', [
+        'posts' =>
+        $posts->transform(function ($post) {
+            return [
+                'id' => $post->id,
+                'title' => $post->title,
+            ];
+        }),
+    ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+
+
+
+//Post
+
+Route::resource('post', PostController::class);
 
 require __DIR__.'/auth.php';
