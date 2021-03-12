@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PostController;
+use App\Models\Post;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -18,10 +19,26 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
+
+    // dd(Post::all()->transform(function ($post) {
+    //     return [
+    //         'id' => $post->id,
+    //         'title' => $post->title,
+    //         'posted_by' => $post->user->name,
+    //     ];
+    // }),);
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
+        'posts' => Post::all()->transform(function ($post) {
+            return [
+                'id' => $post->id,
+                'title' => $post->title,
+                'posted_by' =>$post->user->name,
+            ];
+        }),
+
         'phpVersion' => PHP_VERSION,
     ]);
 });
